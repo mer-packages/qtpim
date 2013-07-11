@@ -50,7 +50,7 @@ This package contains the Qt PIM Contacts development files
 %package -n qt5-qtdeclarative-pim-contacts
 Summary:    Qt PIM Contacts import for QtDeclarative
 Group:      System/Libraries
-Requires:   qt5-qtqtdeclarative
+Requires:   qt5-qtdeclarative
 
 %description -n qt5-qtdeclarative-pim-contacts
 This package contains the PIM Contacts imports for QtDeclarative
@@ -87,7 +87,7 @@ This package contains the Qt PIM Organizer development files
 %package -n qt5-qtdeclarative-pim-organizer
 Summary:    Qt PIM Organizer import for QtDeclarative
 Group:      System/Libraries
-Requires:   qt5-qtqtdeclarative
+Requires:   qt5-qtdeclarative
 
 %description -n qt5-qtdeclarative-pim-organizer
 This package contains the PIM Organizer imports for QtDeclarative
