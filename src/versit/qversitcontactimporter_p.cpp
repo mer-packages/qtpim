@@ -352,7 +352,8 @@ bool QVersitContactImporterPrivate::createPhone(
 
     if (property.name() == QStringLiteral("X-ASSISTANT-TEL"))
         subTypesInt << QContactPhoneNumber::SubTypeAssistant;
-    phone.setSubTypes(subTypesInt);
+    if (!subTypesInt.isEmpty())
+        phone.setSubTypes(subTypesInt);
     saveDetailWithContext(updatedDetails, phone, extractContexts(property));
     return true;
 }
@@ -398,11 +399,14 @@ bool QVersitContactImporterPrivate::createAddress(
     QList<int> subTypesInt;
 
     foreach (const QString &stringValue, subTypes) {
-        int mappedValue = mSubTypeMappings.key(stringValue).second;
-        subTypesInt << mappedValue;
+        if (mSubTypeMappings.values().contains(stringValue)) {
+            int mappedValue = mSubTypeMappings.key(stringValue).second;
+            subTypesInt << mappedValue;
+        }
     }
 
-    address.setSubTypes(subTypesInt);
+    if (!subTypesInt.isEmpty())
+        address.setSubTypes(subTypesInt);
 
     saveDetailWithContext(updatedDetails, address, extractContexts(property));
     return true;
