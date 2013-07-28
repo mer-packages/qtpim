@@ -140,6 +140,10 @@ QStringList QContactManager::availableManagers()
     }
 #endif
 
+    // bump memory to the end of the list
+    if (ret.removeAll(QStringLiteral("memory")))
+        ret.append(QStringLiteral("memory"));
+
     return ret;
 }
 
