@@ -140,6 +140,17 @@ QStringList QContactManager::availableManagers()
     }
 #endif
 
+    // bump memory to the end of the list
+    if (ret.removeAll(QStringLiteral("memory")))
+        ret.append(QStringLiteral("memory"));
+
+    // if a plugin was specifically requested, put it first
+    if (!qEnvironmentVariableIsEmpty("QTCONTACTS_MANAGER_OVERRIDE")) {
+        QString managerName = qgetenv("QTCONTACTS_MANAGER_OVERRIDE");
+        if (ret.removeAll(managerName));
+            ret.prepend(managerName);
+    }
+
     return ret;
 }
 
